@@ -2,11 +2,12 @@ import React from 'react'
 import { View, Text, StatusBar, ScrollView,Image, TextInput } from 'react-native'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {BellIcon, MagnifyingGlassIcon} from 'react-native-heroicons/outline'
+import Categories from './Categories';
+import Recipes from '../components/Recipes';
 
 const HomeScreen = () => {
+  const [active, setActive] = React.useState("Beef")
   
-  const networkImage = { uri: "https://i.ibb.co/nMdcxWw/avatar.jpg" };
-
   return (
     <View className ="flex-1 bg-white">
       <ScrollView 
@@ -14,7 +15,7 @@ const HomeScreen = () => {
        className="space-y-6 pt-6">
       
          <View className="flex flex-row items-center justify-between">
-           <Image source={networkImage} style={{height: hp(5), width: hp(5.5)}} className="rounded-full" />
+           <Image source={{uri:"https://i.ibb.co/nMdcxWw/avatar.jpg"}} style={{height: hp(5), width: hp(5.5)}} className="rounded-full" />
            <BellIcon size={hp(4)} color="gray"/>
          </View>
 
@@ -31,7 +32,10 @@ const HomeScreen = () => {
             <MagnifyingGlassIcon/>
           </View>
         </View>
+        <Categories active={active} setActive={setActive}/>
+        <Recipes/>
       </ScrollView>
+      
     </View>
   )
 }
